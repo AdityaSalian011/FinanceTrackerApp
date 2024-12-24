@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log Out Page
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h3>You have been logged out <a href="{% url "login" %}">Login Here</a></h3>
+</div>
+
+{% endblock %}

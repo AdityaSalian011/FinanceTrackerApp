@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Finance Tracking App</h1>
+    <h2>Home Page</h2>
+    <br>
+    <a href="{% url "info" %}" class="btn btn-success">Get Started</a>
+    <br>
+    <h4>Begin your finance tracking journey by clicking above !!</h4>   
+</div>
+{% endblock %}

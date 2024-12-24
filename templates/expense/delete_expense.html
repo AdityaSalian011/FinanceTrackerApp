@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Delete Expense
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <h2>Are you sure ou want to delete this ??</h2>
+    <button class="btn btn-danger" type="Delete">Delete</button>
+    <a href="{% url "info" %}" class="btn btn-primary">Back</a>
+</form>
+{% endblock %}

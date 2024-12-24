@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="mt-4">Login Page</h1>
+        <div class="card bg-black" style="width: 22rem;">
+            <div class="card-body">
+                <div>
+                    <br>
+                    {{form.as_p}}
+                </div>
+                <div> 
+                    <button class="btn btn-primary" type="submit">LogIn</button>
+                    <a href="{% url "info" %}" class="btn btn-danger">Back</a>
+                </div>
+                <div>
+                    <p>Don't have an account? <a href="{% url "register" %}">Register Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

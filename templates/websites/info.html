@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Summary table
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="mb-3">
+        <br>
+        <a href="{% url "expense" %}" class="btn btn-secondary">Expense</a>
+        <a href="{% url "income" %}" class="btn btn-secondary">Income</a>
+        <a href="{% url "budget" %}" class="btn btn-secondary">Budget</a>
+    </div>
+
+    <div>
+        <div class="dropdown">
+            <button class="btn btn-tertiary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Overview
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url "expense_chart" %}">Expense Chart</a></li>
+                <li><a class="dropdown-item" href="{% url "income_chart" %}">Income Chart</a></li>
+                <li><a class="dropdown-item" href="{% url "budget_plot" %}">Budget Plot</a></li>
+            </ul>
+        </div>
+  </div>
+  <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-black">
+                    <div class="card-body">
+                        <h3 class="card-title">Expense Records</h5>
+                        {% for expense in expenses %}
+                        <hr class="border-white">
+                        <h5>User: {{expense.user.username}}</h5>
+                        <br>
+                        <div>
+                            <h5>{{expense.get_category_display}}</h2>
+                            <h5>{{expense.money}}</h2>
+                            {{expense.get_account_display}}
+                        </div>
+                        <div>
+                            <br>
+                            <a href="{% url "edit_expense" expense.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url "delete_expense" expense.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-black">
+                    <div class="card-body">                        
+                        <h3>Income Records</h3>
+                        {% for income in incomes %}
+                        <hr class="border-white">
+                        <h5>User: {{income.user.username}}</h5>
+                        <br>
+                        <div>
+                            <h5>{{income.get_category_display}}</h5>
+                            <h5>{{income.money}}</h5>
+                            {{income.get_account_display}}
+                        </div>
+                        <div>
+                            <br>
+                            <a href="{% url "edit_income" income.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url "delete_income" income.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                        {% endfor %}   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-black">
+                    <div class="card-body">
+                        <h3>Budget Records</h3>
+                        {% for budget in budgets %}
+                        <hr class="border-white">
+                        <h5>User: {{budget.user.username}}</h5>
+                        <br>
+                        <div>
+                            <h5>{{budget.get_category_display}}</h5> 
+                            <h5>{{budget.money}}</h5>                          
+                            {{budget.get_account_display}}
+                        </div>
+                        <div>
+                            <br>
+                            <a href="{% url "edit_budget" budget.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url "delete_budget" budget.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="mt-4">Registration Page</h1>
+        <div class="card bg-black" style="width: 22rem;">
+            <div class="card-body">
+                <div>
+                    <br>
+                    {{form.as_p}}
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">Register</button>
+                    <a href="{% url "info" %}" class="btn btn-danger">Back</a>
+                </div>
+                <div>
+                    <p>Already have an account? <a href="{% url "login" %}"> Login Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
